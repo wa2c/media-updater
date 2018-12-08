@@ -28,7 +28,7 @@ public class Settings {
         try (BufferedReader br = new BufferedReader(new FileReader(SETTINGS_FILE))) {
             return gson.fromJson(br, Settings.class);
         } catch(IOException e){
-            e.printStackTrace();
+            Logger.e(e);
             return new Settings();
         }
     }
@@ -39,7 +39,7 @@ public class Settings {
         try (FileWriter fw = new FileWriter(SETTINGS_FILE, false)) {
             fw.write(json);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.e(e);
         }
     }
 

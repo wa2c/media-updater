@@ -72,7 +72,7 @@ public class MainForm extends JFrame {
         try {
             Files.setAttribute(path, "dos:readonly", true);
         } catch (IOException e) {
-            e.printStackTrace();
+            Logger.e(e);
         }
 
         if (file.isDirectory()) {
@@ -143,7 +143,7 @@ public class MainForm extends JFrame {
                     searchFiles(f);
                 }
             } catch (Exception e) {
-                e.printStackTrace();
+                Logger.e(e);
             }
 
             return true;

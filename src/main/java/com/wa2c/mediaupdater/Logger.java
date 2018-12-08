@@ -7,7 +7,6 @@ import java.util.logging.Handler;
 import java.util.logging.Level;
 
 public class Logger {
-
     private static java.util.logging.Logger logger;
     private static File logFile = new File(Resource.get("app.dir"), "app.log");
     static {
@@ -21,24 +20,30 @@ public class Logger {
     }
 
     public static void d(Object obj) {
+        if (obj == null)
+            return;
         logger.log(Level.FINEST, obj.toString());
     }
 
     public static void i(Object obj) {
+        if (obj == null)
+            return;
         logger.log(Level.INFO, obj.toString());
     }
 
     public static void w(Object obj) {
+        if (obj == null)
+            return;
         logger.log(Level.WARNING, obj.toString());
     }
 
     public static void e(Object obj) {
         if (obj == null)
             return;
-
         logger.log(Level.SEVERE, obj.toString());
+
         if (obj instanceof Exception) {
-            ((Exception)obj).getStackTrace();
+            ((Exception)obj).printStackTrace();
         }
     }
 }

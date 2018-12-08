@@ -23,7 +23,7 @@ public class Program {
                     MainForm f = new MainForm();
                     f.setVisible(true);
                 } catch (Exception e) {
-                    e.printStackTrace();
+                    Logger.e(e);
                 }
             }
         });
