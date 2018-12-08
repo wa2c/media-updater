@@ -11,28 +11,24 @@ import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.List;
-import java.util.ResourceBundle;
 
 /**
  * Main Form
  */
 public class MainForm extends JFrame {
     private JPanel mainContentPanel;
+    private JTable fileTable;
 
     public MainForm() {
         setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        setTitle(ResourceBundle.getBundle("resource").getString("title.App"));
+        setTitle(Resource.get("app,title"));
         setContentPane(mainContentPanel);
         pack();
         setVisible(true);
 
         // settings
-        addWindowListener(new WindowAdapter() {
-            public void windowClosing(WindowEvent e) {
-                Settings.writeSettings(Program.Pref);
-            }
-        });
-        Program.Pref = Settings.readSettings();
+        this.setBounds(Program.Pref.windowX, Program.Pref.windowY, Program.Pref.windowW, Program.Pref.windowH);
+        addWindowListener(windowAdatpter);
 
         initializeUI();
     }
@@ -87,6 +83,17 @@ public class MainForm extends JFrame {
     }
 
 
+
+    private WindowAdapter windowAdatpter = new WindowAdapter() {
+        public void windowClosing(WindowEvent e) {
+            Program.Pref.windowX = MainForm.this.getBounds().x;
+            Program.Pref.windowY = MainForm.this.getBounds().y;
+            Program.Pref.windowW = MainForm.this.getBounds().width;
+            Program.Pref.windowH = MainForm.this.getBounds().height;
+
+            Settings.writeSettings(Program.Pref);
+        }
+    };
 
 
     /**
