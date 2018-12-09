@@ -91,7 +91,7 @@ public class MainForm extends JFrame {
             Program.Pref.windowW = MainForm.this.getBounds().width;
             Program.Pref.windowH = MainForm.this.getBounds().height;
 
-            Settings.writeSettings(Program.Pref);
+            Settings.write(Program.Pref);
         }
     };
 

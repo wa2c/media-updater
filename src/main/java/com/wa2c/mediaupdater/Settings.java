@@ -24,7 +24,7 @@ public class Settings {
         gson = new GsonBuilder().setPrettyPrinting().create();
     }
 
-    static Settings readSettings() {
+    static Settings read() {
         try (BufferedReader br = new BufferedReader(new FileReader(SETTINGS_FILE))) {
             return gson.fromJson(br, Settings.class);
         } catch(IOException e){
@@ -34,7 +34,7 @@ public class Settings {
     }
 
 
-    static void writeSettings(Settings settings) {
+    static void write(Settings settings) {
         String json = gson.toJson(settings);
         try (FileWriter fw = new FileWriter(SETTINGS_FILE, false)) {
             fw.write(json);

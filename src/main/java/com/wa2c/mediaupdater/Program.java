@@ -17,7 +17,7 @@ public class Program {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Program.Pref = Settings.readSettings();
+                    Program.Pref = Settings.read();
 
                     UIManager.setLookAndFeel(UIManager.getSystemLookAndFeelClassName());
                     MainForm f = new MainForm();
